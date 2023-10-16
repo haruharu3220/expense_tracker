@@ -25,11 +25,11 @@ class ExpenseItem extends StatelessWidget {
               //https://api.flutter.dev/flutter/widgets/Spacer-class.html
               const Spacer(),
               Row(children: [
-                Icon(Icons.alarm),
+                Icon(categoryIcons[expense.category]),
                 const SizedBox(
                   width: 8,
                 ),
-                Text(expense.date.toString()),
+                Text(expense.formattedDate),
               ]),
             ],
           ),
