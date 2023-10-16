@@ -2,8 +2,10 @@ import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
 
+//''で囲まれていないことに注意
 enum Category { food, travel, leisure, work }
 
+//経費クラス
 class Expense {
   Expense({
     required this.title,
@@ -16,5 +18,5 @@ class Expense {
   final String title;
   final double amount; //money
   final DateTime date;
-  final Category category;
+  final Category category; //Category型
 }
