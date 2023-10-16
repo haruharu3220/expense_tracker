@@ -11,6 +11,7 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
+  //ダミーデータの作成
   final List<Expense> _registeredExpenses = [
     Expense(
       title: 'Flutter Course',
@@ -26,13 +27,13 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
+  //ビルド関数にはロジックを極力入れない
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: const [
           Text('The chart'),
-          Text('Expenses list...'),
         ],
       ),
     );
