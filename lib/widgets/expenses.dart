@@ -28,6 +28,14 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
+  // AppBarのボタンを押した時の処理
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => Text('Model buttom sheet'),
+    );
+  }
+
   //ビルド関数にはロジックを極力入れない
   @override
   Widget build(BuildContext context) {
@@ -36,7 +44,7 @@ class _ExpensesState extends State<Expenses> {
         title: const Text("Flutter ExpenseTracker"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _openAddExpenseOverlay,
             icon: const Icon(Icons.add),
           ),
         ],
