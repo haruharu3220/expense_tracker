@@ -41,6 +41,30 @@ class _NewExpenseState extends State<NewExpense> {
     });
   }
 
+  void _submitExpenseDate() {
+    final enteredAmount = double.tryParse(_amountController.text);
+    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
+    //金額が空欄　または　無効な数値の場合
+    if (_titleController.text.trim().isEmpty || amountIsInvalid) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Invalid input'),
+          content: const Text('Please make sure that'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -125,10 +149,7 @@ class _NewExpenseState extends State<NewExpense> {
                   },
                   child: Text('Cancel')),
               ElevatedButton(
-                onPressed: () {
-                  print(_titleController.text);
-                  print(_amountController.text);
-                },
+                onPressed: _submitExpenseDate,
                 child: const Text('Save Expense'),
               ),
             ],
