@@ -32,6 +32,7 @@ class _ExpensesState extends State<Expenses> {
   // AppBarのボタンを押した時の処理
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      isScrollControlled: true, //trueのときモーダルを画面いっぱいに出す
       context: context,
       builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
