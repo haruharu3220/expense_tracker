@@ -53,6 +53,16 @@ class _ExpensesState extends State<Expenses> {
   //ビルド関数にはロジックを極力入れない
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text("No expenses found"),
+    );
+
+    if (_registeredExpenses.isNotEmpty) {
+      mainContent = ExpensesList(
+        expenses: _registeredExpenses,
+        onRemoveExpense: _removeExpense,
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter ExpenseTracker"),
@@ -69,10 +79,7 @@ class _ExpensesState extends State<Expenses> {
 
           const Text('The chart'),
           Expanded(
-            child: ExpensesList(
-              expenses: _registeredExpenses,
-              onRemoveExpense: _removeExpense,
-            ),
+            child: mainContent,
           ),
         ],
       ),
